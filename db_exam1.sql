@@ -12,7 +12,7 @@ student_id INT PRIMARY KEY
 );
 
 insert into major
-(major_id, major_name)
+(major_id, maojor_name)
 values(1, '英文学')
 ,(2, '応用化学')
 ,(3, '情報工学')
