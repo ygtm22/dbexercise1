@@ -52,15 +52,14 @@ group by order_date
 
 --9
 select s.customer_id, customer_name
-, avg(amount) avg_amount
-, trunc(amount)
+, trunc(avg(amount)) avg_amount
 from sales s
 join customer c
 on s.customer_id = c.customer_id
-group by s.customer_id, customer_name, trunc
+group by s.customer_id, customer_name
 order by customer_id
 
 --10
 select * from sales
-where order_date between '2018/09/01' and '2018/09/30';
-order by seles_id limit 1
+where order_date between '2018/09/01' and '2018/09/30'
+order by sales_id limit 1
