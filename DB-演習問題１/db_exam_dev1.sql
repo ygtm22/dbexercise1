@@ -51,3 +51,7 @@ where sales_id = 4
 
 delete from sales
 where amount IS NULL
+
+update sales
+set customer_id = 3
+where sales_id = 2
