@@ -2,6 +2,11 @@ insert into item
 (item_id, item_name, price, discount_price, consumptiontax_id)
 values (1, 'いろはす天然水', '100', '-10', 1)
 
+insert into item
+(item_id, item_name, price, discount_price, consumptiontax_id)
+values (2, 'ツナマヨおにぎり', '120', '0', 1)
+, (3, 'ファブリーズ', '400', '0', 2)
+
 insert into payment
 (payment_id, payment)
 values (1, '現金')
@@ -11,6 +16,10 @@ values (1, '現金')
 insert into conveniencestore
 (conveniencestore_id, conveniencestore_name, address, tel)
 values (1, '日本橋店', '日本橋1-1-1', '03-111-2222')
+
+insert into conveniencestore
+(conveniencestore_id, conveniencestore_name, address, tel)
+values (2, '新天地浮島店', '松尾2-20-6', '098-861-7001')
 
 insert into consumptiontax
 (consumptiontax_id, consumptiontax)
@@ -30,14 +39,14 @@ values (1, '001')
 , (3, '003')
 
 insert into receipt
-(slip_no, conveniencestore_id, purchasedate, cashregister_id, responsibleperson_id, item_id)
-values ('000001', 1, '2022年4月1日（金）', 1, 1, 1)
+(receipt_id)
+values (1)
 
-select price, consumptiontax
-from item i
-join consumptiontax c
-on i.consumptiontax_id = c.consumptiontax_id
-order by price
+insert into slip
+(silp_id, silp_no)
+values (1, 000001)
+, (2, 000002)
+, (3, 000003)
 
 select * from item;
 
@@ -52,3 +61,7 @@ select * from responsibleperson;
 select * from cashregister;
 
 select * from receipt;
+
+select * from receiptdetails;
+
+select * from silp

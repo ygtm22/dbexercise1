@@ -1,12 +1,29 @@
 --* RestoreFromTempTable
 create table receipt (
-  slip_no character varying not null
+  receipt_id integer not null
+  , receiptdetails_id integer
+  , constraint receipt_PKC primary key (receipt_id)
+) ;
+
+-- 
+--* RestoreFromTempTable
+create table silp (
+  slip_id integer not null
+  , slip_no integer
+  , constraint silp_PKC primary key (slip_id)
+) ;
+
+--* RestoreFromTempTable
+create table receiptdetails (
+  receiptdetails_id integer not null
   , conveniencestore_id integer
   , purchasedate character varying
   , cashregister_id integer
   , responsibleperson_id integer
   , item_id integer
-  , constraint receipt_PKC primary key (slip_no)
+  , paymentmethod_id integer
+  , slip_id integer
+  , constraint receiptdetails_PKC primary key (receiptdetails_id)
 ) ;
 
 -- 
@@ -62,19 +79,20 @@ create table item (
   , constraint item_PKC primary key (item_id)
 ) ;
 
-comment on column receipt.slip_no is '伝票番号';
+comment on column NEW_ENTITY9.receipt_id is 'レシートID';
+comment on column NEW_ENTITY9.receiptdetails_id is 'レシート詳細ID';
+
+comment on column NEW_ENTITY8.slip_id is '伝票番号ID';
+comment on column NEW_ENTITY8.slip_no is '伝票番号';
+
+comment on column receipt.receiptdetails_id is 'レシート詳細ID';
 comment on column receipt.conveniencestore_id is 'コンビニID';
 comment on column receipt.purchasedate is '購入日';
 comment on column receipt.cashregister_id is 'レジID';
 comment on column receipt.responsibleperson_id is '責任者ID';
 comment on column receipt.item_id is '商品ID';
-comment on column receipt.totalproductprice is '商品合計額';
-comment on column receipt.totaldiscount is '値引き合計';
-comment on column receipt.subtotal is '小計';
-comment on column receipt.total is '合計';
-comment on column receipt.totaltaxrate is '税率合計';
-comment on column receipt.totalconsumptiontax is '消費税合計';
 comment on column receipt.paymentmethod_id is '支払方法ID';
+comment on column receipt.slip_id is '伝票番号ID';
 
 comment on column cashregister.cashregister_id is 'レジID';
 comment on column cashregister.cashregister_no is 'レジNO';
@@ -99,4 +117,4 @@ comment on column item.price is '値段';
 comment on column item.discount_price is '値引き額';
 comment on column item.consumptiontax_id is '消費税ID';
 
-drop table receipt
+drop table receiptdetails
